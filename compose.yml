@@ -1,0 +1,23 @@
+version: '2.3'
+
+services:
+  deepstream_63:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: deepstream_63:dev
+    runtime: nvidia
+    volumes:
+      - /home/dev/workspace/huytm/Deepstream-SDK-Example-Apps:/app
+    working_dir: /app
+    tty: true
+    networks:
+      - backing-services
+
+networks:
+  backing-services:
+    driver: bridge
+
+volumes:
+  mongodb-data: {}
+  cache: {}
